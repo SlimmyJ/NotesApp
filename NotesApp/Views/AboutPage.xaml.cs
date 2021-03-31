@@ -14,9 +14,9 @@ namespace NotesApp.Views
             InitializeComponent();
             }
 
-        private async void OnButtonLearnMoreClicked(object sender, EventArgs e)
+        private void OnButtonLearnMoreClicked(object sender, EventArgs e)
             {
-            await Launcher.OpenAsync("https://www.google.be");
+            Launcher.OpenAsync("https://www.google.be");
             }
         }
     }
