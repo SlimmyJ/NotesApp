@@ -2,6 +2,8 @@
 <Shell x:Class="NotesApp.AppShell"
        xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:NotesApp.Views"
+       xmlns:mynamespace="clr-namespace:NotesApp"
        Title="NotesApp">
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
@@ -37,7 +39,14 @@
                    TargetType="FlyoutItem" />
         </ResourceDictionary>
     </Shell.Resources>
-    <TabBar />
+    <TabBar>
+        <ShellContent Title="Snippits"
+                      ContentTemplate="{DataTemplate local:SnippitPage}"
+                      Icon="icon_feed.png" />
+        <ShellContent Title="About"
+                      ContentTemplate="{DataTemplate local:AboutPage}"
+                      Icon="icon_feed.png" />
+    </TabBar>
     <!--
         If you would like to navigate to this content you can do so by calling
         await Shell.Current.GoToAsync("//LoginPage");

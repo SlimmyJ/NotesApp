@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -24,15 +25,26 @@ namespace NotesApp.Views
             if (File.Exists(_filename)) Editor.Text = File.ReadAllText(_filename);
             }
 
-        private void OnSaveButtonClicked(object sender, EventArgs e)
+        private async Task WhenSaveButtonClicked()
             {
             File.WriteAllText(_filename, Editor.Text);
             }
 
-        private void OnDeleteButtonClicked(object sender, EventArgs e)
+        private async void OnSaveButtonClicked(object sender, EventArgs e)
+            {
+            await WhenSaveButtonClicked();
+            }
+
+        private async Task WhenDeleteButtonClicked()
             {
             if (File.Exists(_filename)) File.Delete(_filename);
+
             Editor.Text = string.Empty;
+            }
+
+        private async void OnDeleteButtonClicked(object sender, EventArgs e)
+            {
+            await WhenDeleteButtonClicked();
             }
         }
     }
